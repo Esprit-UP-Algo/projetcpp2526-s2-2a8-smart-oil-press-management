@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1313</width>
+    <height>861</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1313</width>
+    <height>861</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>ZitTech - Gestion des Partenaires</string>
+  </property>
+  <property name="styleSheet">
+   <string>
+/* GLOBAL */
+QMainWindow {
+    background-color: #f5f5f5;
+    font-family: Segoe UI;
+    font-size: 13px;
+}
+
+/* SIDEBAR */
+#sidebar {
+    background-color: #2d4a1f;
+}
+
+#sidebar QPushButton {
+    background-color: #ffd700;
+    color: #2d4a1f;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#sidebar QPushButton:hover {
+    background-color: #ffed4e;
+}
+
+/* HEADER */
+#headerLabel {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2d4a1f;
+    padding: 20px;
+}
+
+/* TAB WIDGET */
+QTabWidget::pane {
+    border: 2px solid #5d732c;
+    border-radius: 8px;
+    background: white;
+}
+
+QTabBar::tab {
+    background: #eaeaea;
+    padding: 10px 25px;
+    margin-right: 5px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #2d4a1f;
+    font-weight: bold;
+}
+
+QTabBar::tab:selected {
+    background: #ffd700;
+}
+
+/* INPUTS */
+QLineEdit, QComboBox, QTextEdit {
+    border: 2px solid #5d732c;
+    border-radius: 6px;
+    padding: 6px;
+    background: white;
+    color: #2d4a1f;
+}
+
+/* SEARCH BAR */
+#searchLineEdit {
+    border: 2px solid #5d732c;
+    border-radius: 6px;
+    padding: 10px;
+    background: white;
+    color: #2d4a1f;
+    font-size: 14px;
+}
+
+/* TABLE */
+QTableWidget {
+    background: white;
+    border: 2px solid #5d732c;
+    border-radius: 6px;
+}
+
+QHeaderView::section {
+    background-color: #5d732c;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* ACTION BUTTONS */
+QPushButton {
+    background-color: #ffd700;
+    color: #2d4a1f;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #ffed4e;
+}
+
+/* SEARCH BUTTONS - JAUNE */
+#searchButton, #filterButton, #refreshButton, #exportButton {
+    background-color: #ffd700;
+    color: #2d4a1f;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+#searchButton:hover, #filterButton:hover, #refreshButton:hover, #exportButton:hover {
+    background-color: #ffed4e;
+}
+
+#clearButton {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: bold;
+}
+
+#clearButton:hover {
+    background-color: #c82333;
+}
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="margin" stdset="0">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="sidebar">
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="margin" stdset="0">
+        <number>15</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="logoLabel">
+ <property name="minimumSize">
+  <size>
+   <width>160</width>
+   <height>90</height>
+  </size>
+ </property>
+ <property name="maximumSize">
+  <size>
+   <width>180</width>
+   <height>110</height>
+  </size>
+ </property>
+ <property name="pixmap">
+  <pixmap>:/resources/logo.png</pixmap>
+ </property>
+ <property name="scaledContents">
+  <bool>true</bool>
+ </property>
+ <property name="alignment">
+  <set>Qt::AlignmentFlag::AlignCenter</set>
+ </property>
+</widget>
+
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="employeesButton">
+         <property name="text">
+          <string>👥 Employés</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clientsButton">
+         <property name="text">
+          <string>👤 Clients</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="stockButton">
+         <property name="text">
+          <string>📦 Stock</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="machinesButton">
+         <property name="text">
+          <string>⚙️ Machines</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="productionButton">
+         <property name="text">
+          <string>🏭 Production</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="partnersButton">
+         <property name="text">
+          <string>🤝 Partenaires</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="bottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logoutButton">
+         <property name="text">
+          <string>🚪 Déconnexion</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="mainFrame">
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin" stdset="0">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="headerLabel">
+         <property name="text">
+          <string>Gestion des Partenaires</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="partnersListTab">
+          <attribute name="title">
+           <string>Liste des Partenaires</string>
+          </attribute>
+          <layout class="QVBoxLayout">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <property name="margin" stdset="0">
+            <number>20</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+
+
+             <item>
+              <widget class="QLineEdit" name="searchLineEdit">
+               <property name="placeholderText">
+                <string>🔍 Rechercher un partenaire (nom, email, téléphone)...</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="searchButton">
+               <property name="text">
+                <string>🔍</string>
+               </property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QPushButton" name="exportButton">
+               <property name="text">
+                <string>📄 </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="filterButton">
+               <property name="text">
+                <string>🔽 </string>
+               </property>
+              </widget>
+             </item>
+
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="QTableWidget" name="partnersTable">
+               <property name="columnCount">
+                <number>5</number>
+               </property>
+               <column>
+                <property name="text">
+                 <string>Nom</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Email</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Téléphone</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Type</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Statut</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="formFrame">
+               <property name="minimumSize">
+                <size>
+                 <width>300</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <property name="margin" stdset="0">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="nameLabel">
+                  <property name="text">
+                   <string>Nom du Partenaire</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="nameLineEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="emailLabel">
+                  <property name="text">
+                   <string>Email</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="emailLineEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="phoneLabel">
+                  <property name="text">
+                   <string>Téléphone</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="phoneLineEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="typeLabel">
+                  <property name="text">
+                   <string>Type de Partenaire</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="typeComboBox">
+                  <item>
+                   <property name="text">
+                    <string>Fournisseur</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Distributeur</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Transporteur</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="statusLabel">
+                  <property name="text">
+                   <string>Statut</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="statusComboBox">
+                  <item>
+                   <property name="text">
+                    <string>Actif</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Inactif</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="formSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="addButton">
+                    <property name="text">
+                     <string>Ajouter</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="updateButton">
+                    <property name="text">
+                     <string>Modifier</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="deleteButton">
+                    <property name="styleSheet">
+                     <string>
+QPushButton {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #c82333;
+}
+
+QPushButton:pressed {
+    background-color: #a71d2a;
+}
+                     </string>
+                    </property>
+                    <property name="text">
+                     <string>Supprimer</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="statsTab">
+          <attribute name="title">
+           <string>Statistiques</string>
+          </attribute>
+          <layout class="QVBoxLayout">
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <property name="margin" stdset="0">
+            <number>20</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="statsHeaderLabel">
+             <property name="styleSheet">
+              <string>font-size: 18px; font-weight: bold; color: #2d4a1f;</string>
+             </property>
+             <property name="text">
+              <string>📊 Statistiques des partenaires</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="statsFrame">
+             <property name="styleSheet">
+              <string>background-color: white; border: 2px solid #5d732c; border-radius: 8px; padding: 20px;</string>
+             </property>
+             <layout class="QVBoxLayout">
+              <item>
+               <widget class="QLabel" name="statsContentLabel">
+                <property name="text">
+                 <string>Contenu des statistiques à développer...</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="mailingTab">
+          <attribute name="title">
+           <string>Mailing</string>
+          </attribute>
+          <layout class="QVBoxLayout">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <property name="margin" stdset="0">
+            <number>20</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="mailingHeaderLabel">
+             <property name="styleSheet">
+              <string>font-size: 18px; font-weight: bold; color: #2d4a1f;</string>
+             </property>
+             <property name="text">
+              <string>📧 Envoyer un mail aux partenaires</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="messageTextEdit">
+             <property name="placeholderText">
+              <string>Rédigez votre message ici...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="sendMailButton">
+             <property name="text">
+              <string>📤 Envoyer</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
