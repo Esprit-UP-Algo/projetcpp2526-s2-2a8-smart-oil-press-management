@@ -1,1 +1,5 @@
-
+<RCC>
+    <qresource prefix="/">
+        <file>logozit.png</file>
+    </qresource>
+</RCC>
