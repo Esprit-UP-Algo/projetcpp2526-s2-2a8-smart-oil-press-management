@@ -2,6 +2,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QMessageBox>
+#include <QTableWidgetItem>
+#include <QDate>
+#include <QLabel>
+#include <QFrame>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPrinter>
+#include <QPainter>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,11 +30,21 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_btnEmploye_clicked();
+    void afficherEmployes();
+    void ajouterEmploye();
+    void modifierEmploye();
+    void supprimerEmploye();
+    void remplirFormulaireEmploye(int row, int column);
+    void mettreAJourStatistiques();
+    void exporterPDF();
 
 private:
     Ui::MainWindow *ui;
 
+    QLabel *labelNbOperateurs;
+    QLabel *labelNbControleurs;
+    QLabel *labelNbResponsables;
+    QLabel *labelSalaireMoyen;
 };
 
 #endif // MAINWINDOW_H
