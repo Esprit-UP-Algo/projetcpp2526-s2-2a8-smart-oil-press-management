@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidgetItem>
+#include "partenaire.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,8 +19,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_addpartenaireButton_clicked();
+    void on_deletepartenaireButton_clicked();
+    void on_partnersTable_itemClicked(QTableWidgetItem *item);
+
 private:
     Ui::MainWindow *ui;
+
+    void chargerPartenaires();
+    void chargerEmployesComboBox();       // ← nouveau
+    void remplirTable(const QList<Partenaire> &liste);
+    void viderFormulaire();
+    int  idSelectionne();
 };
 
 #endif // MAINWINDOW_H

@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    partenaire.cpp
 
 HEADERS += \
     connection.h \
-    mainwindow.h
+    mainwindow.h \
+    partenaire.h
 
 FORMS += \
     mainwindow.ui
@@ -29,3 +31,4 @@ RESOURCES += \
     rsssssssssss.qrc
 
 QT +=sql
+
