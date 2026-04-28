@@ -1,0 +1,11 @@
+build/
+mailing.cpp
+chatbot.cpp
+chatbot.h
+jumeaunumerique.cpp
+predectionprod.cpp
+detectionprod.cpp
+detectionprod.h
+.qtcreator/
+voicematieres.cpp
+predectionprod.h
